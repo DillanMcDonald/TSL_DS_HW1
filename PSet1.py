@@ -35,7 +35,7 @@ cv2.imwrite('B-RGB.png',image[:, :, 0]) #writing just the blue channel
 cv2.imwrite('R-RGB.png',image[:, :, 2]) #writing just the red channel
 cv2.imwrite('G-RGB.png',image[:, :, 1]) #writing just the green channel
 image_b = cv2.imread('B-RGB.png',-1)    #reading back in each one
-image_r = cv2.imread('R-RGB.png',-1)
+image_r = cv2.imread('R-RGB.png',-1)    #turns out they're grey scale - just values per channel
 image_g = cv2.imread('G-RGB.png',-1)
 
 plt.axis("off") #turn off axis
@@ -90,7 +90,7 @@ plt.show()
 image = cv2.imread('Particles.jpg',0)#import the particles image
 
 ret, image_thresh = cv2.threshold(image,110 ,255,cv2.THRESH_BINARY)  #threshold=110 best I guess would be just particles, and you could probably do that by optimizing the threshold value based on the number of circles it recognizes
-plt.hist(np.histogram(image_thresh)) #not really sure why this histogram has values in the 40,000 area
+plt.hist(np.histogram(image_thresh)) #not really sure why this histogram has values other than 0 and 1
 plt.show()
 plt.imshow(image_thresh) #actual thresholded image
 plt.show()
